@@ -1,7 +1,7 @@
 import numpy as np
 
 def MeanSquaredError(yTrue, yPred):
-    return np.mean(np.power(yTrue - yPred, 2))
+    return np.mean(np.power(yTrue - yPred, 4))
 
 def MeanSquaredErrorPrime(yTrue, yPred):
     return 2 * (yPred - yTrue) / np.size(yTrue)

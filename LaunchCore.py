@@ -37,7 +37,7 @@ for index in range(200):
     )
     population.append(network)
     
-population = GeneticAlgoCore.trainGenetically(population, GeneticAlgoCore.ErrorBasedFitness, xTrain, yTrain, generationLimit=500)
+population = GeneticAlgoCore.trainGenetically(population, GeneticAlgoCore.ErrorBasedFitness, xTrain, yTrain, generationLimit=10000)
 
 for network in population:
     print(network.fitnessScore)
