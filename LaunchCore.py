@@ -37,7 +37,7 @@ for index in range(200):
     )
     population.append(network)
     
-population = GeneticAlgoCore.trainGenetically(population, GeneticAlgoCore.ErrorBasedFitness, xTrain, yTrain, generationLimit=1000)
+population = GeneticAlgoCore.trainGenetically(population, GeneticAlgoCore.ErrorBasedFitness, xTrain, yTrain, generationLimit=500)
 
 for network in population:
     print(network.fitnessScore)
@@ -46,6 +46,7 @@ for network in population:
         # print('pred:', np.argmax(output), '\ttrue:', np.argmax(y))
         print('pred:', np.argmax(output), '\ttrue:', np.argmax(y))
         print('Error:', round(NetworkCore.MeanSquaredError(y, output), 3)*100)
+        print('-'*20)
     print("Done with network")  
     input("Waiting...")
     

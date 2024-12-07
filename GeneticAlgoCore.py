@@ -9,7 +9,7 @@ def ErrorBasedFitness(yExpect, yOutput):
     return fitness
 
 def createChildLayers(parent1Layer, parent2Layer, fitnessAvg):
-    mutationRate = (4 - fitnessAvg) / 4
+    mutationRate = (9 - fitnessAvg) / 9
     mutationRange = (-0.5, 0.5)
     
     child1Layer = DenseLayer.DenseLayer(parent1Layer.weights.shape[1], parent1Layer.weights.shape[0])
@@ -50,10 +50,12 @@ def trainGenetically(population: list[NeuralNetwork], fitness, xTrain, yTrain, g
         for network in population:
             network.fitnessScore = 0
         
-        for xInput, yExpect in zip(xTrain, yTrain):
+        count = 0
+        while count < 9:
             for network in population:
-                output = NetworkCore.predict(network.layers, xInput)
-                network.fitnessScore += fitness(yExpect, output)
+                output = NetworkCore.predict(network.layers, xTrain[count % len(xTrain)])
+                network.fitnessScore += fitness(yTrain[count % len(yTrain)], output)
+            count+=1
                 
         population = sorted(
             population,
